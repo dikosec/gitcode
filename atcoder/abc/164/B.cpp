@@ -1,0 +1,67 @@
+// #pragma GCC target("avx2")
+// #pragma GCC optimize("O3")
+// #pragma GCC optimize("unroll-loops")
+// #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+
+#include<bits/stdc++.h>
+using namespace std;
+
+//for loop関係
+#define rep(i,a,n) for(int i=(a);i<(n);++i)
+#define repe(i,a,n) for(int i=(a);i<=(n);++i)
+#define rrep(i,n,a) for(int i=(n);n>(a);--i)
+#define rrepe(i,n,a) for(int i=(n);n>=(a);--i)
+
+//略記
+#define PB push_back
+#define MP make_pair
+#define F first
+#define S second
+#define all(v) v.begin(),v.end()
+#define ENDL << "\n"
+
+using ll = long long;
+using P = pair<int,int>;
+using itn = int;
+
+//定数
+const int INF = 1<<30;
+const ll MOD = 1000000007;
+const long double PI =(acos(-1));
+
+//Degree <-> Radian
+double toRad(double d){ double rad; rad=d*PI/180; return rad; }
+double toDegree(double rad){ double d; d=rad*180/PI; return d; }
+//The least common multiple : lcm
+ll lcm(int a,int b){ return a*b/__gcd(a,b); }
+//素数判定
+bool isPrime(int n){
+    int i; 
+    if(n<2) return 0;
+    else if(n==2) return 1;
+    if(n%2==0) return 0;
+    for(i=3;i*i<=n;i+=2) if(n%i==0) return 0;
+    return 1;
+}
+
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int a,b,c,d;
+    cin >> a >> b >> c >> d;
+    int n=1;
+    int e=3;
+    while(n){
+        if(e%2==1){
+            c-=b;
+        }else a-=d;
+        if(a<=0 || c<=0 ) n=0;
+        e++;
+    }
+
+    if(a<=0){
+        cout << "No" ENDL;
+    }else cout << "Yes" ENDL;
+    return 0;
+}
