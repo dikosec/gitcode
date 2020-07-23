@@ -1,8 +1,3 @@
-// #pragma GCC target("avx2")
-// #pragma GCC optimize("O3")
-// #pragma GCC optimize("unroll-loops")
-// #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -29,21 +24,12 @@ const int INF = 1<<30;
 const ll MOD = 1000000007;
 const long double PI =(acos(-1));
 
-//Degree <-> Radian
-double toRad(double d){ double rad; rad=d*PI/180; return rad; }
-double toDegree(double rad){ double d; d=rad*180/PI; return d; }
-//The least common multiple : lcm
-ll lcm(int a,int b){ return a*b/__gcd(a,b); }
-//素数判定
-bool isPrime(int n){
-    int i; 
-    if(n<2) return 0;
-    else if(n==2) return 1;
-    if(n%2==0) return 0;
-    for(i=3;i*i<=n;i+=2) if(n%i==0) return 0;
-    return 1;
-}
+/***スニペット***
+ifelse, isprime, torad, todeg, lcm, bfs
+****************/
 
+//隣接リスト
+vector<int> to[100005];
 
 int main(){
     ios::sync_with_stdio(false);
