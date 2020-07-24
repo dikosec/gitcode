@@ -53,7 +53,7 @@ int main(){
     int count=1;
     while(n){
         if(n/k>0) count++;
-        n/=k;
+        n/=k; 
     }
     cout << count ENDL;
     
