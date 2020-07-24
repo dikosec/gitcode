@@ -34,7 +34,9 @@ vector<int> to[100005];
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    int a,b;
+    cin >> a >> b;
+    cout << max(a+b,max(a*b,a-b)) ENDL;
     
     return 0;
 }
