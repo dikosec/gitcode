@@ -32,6 +32,8 @@ ifelse, isprime, torad, todeg, lcm, bfs,chmin,chmax
 //adjacency list
 vector<int> to[100005];
 
+//snukeさん
+
 bool f(int x){
     int keta=0;
     while(x){
