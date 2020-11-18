@@ -47,7 +47,23 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    vector<ll> a(4);
+    rep(i,0,4) cin >> a[i];
+    ll ans=-INFLL;
+    // ans=(abs(a*c),min(abs(a*d),min(abs(b*c),abs(b*d))));
+    // if(ans==abs(a*c)) {cout << a*c ENDL; return 0 }
+    // if(ans==abs(a*d)) cout << a*d ENDL;
+    // if(ans==abs(b*c)) cout << b*c ENDL;
+    // if(ans==abs(b*d)) cout << b*d ENDL;
+
+    rep(i,0,2){
+        rep(j,2,4){
+            if(ans<a[i]*a[j]) ans=a[i]*a[j];
+            //ans=max(ans,a[i]*a[j]);
+        }
+    }
     
+    cout << ans ENDL;
     
     return 0;
 }

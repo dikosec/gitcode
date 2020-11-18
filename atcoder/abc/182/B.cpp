@@ -47,7 +47,27 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    int n;cin >> n;
+    vector<int> a(n);
+    int mx=0;
+    rep(i,0,n){
+        cin >> a[i];
+        mx=max(mx,a[i]);
+    }
+    int gcd=0;
+    int cn=0;
+    int ans=0;
+    repe(i,2,mx){
+        cn=0;
+        rep(j,0,n){
+            if(a[j]%i==0) cn++;
+        }
+        if(gcd<cn) ans=i;
+        gcd=max(gcd,cn);
+        
+    }
+
+    cout << ans ENDL;
     
     return 0;
 }

@@ -44,10 +44,45 @@ const int dx[4]={1,0,-1,0};
 const int dy[4]={0,1,0,-1};
 
 
+bool isPrime(int n){
+    int i;
+    if(n<2) return 0;
+    else if(n==2) return 1;
+    if(n%2==0) return 0;
+    for(i=3;i*i<=n;i+=2) if(n%i==0) return 0;
+    return 1;
+}
+
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    ll n; cin >> n;
     
+    vector<ll> ans;
+    bool flag=0;
+
+    if(isPrime(n)){
+        cout << 1 ENDL;
+        cout << n ENDL;
+        return 0;
+    }
+    else{
+        flag=1;
+        repe(i,1,sqrt(n)){
+            if(n%i==0){
+                ans.push_back(i);
+                ans.push_back(n/i);
+            }
+        }
+    }
+
+    sort(all(ans));
+    if(flag){
+        repe(i,0,ans.size()-1){
+            if(ans[i]-ans[i-1]==0) continue;
+            cout << ans[i] ENDL;
+        }
+    }
     
     return 0;
 }

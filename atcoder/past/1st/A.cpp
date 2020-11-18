@@ -47,7 +47,6 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
-    
+
     return 0;
 }

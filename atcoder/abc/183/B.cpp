@@ -47,7 +47,11 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    int sx,sy,gx,gy;cin >> sx >> sy >> gx >> gy;
+
+    long double v=(long double)((sy*gx+sx*gy)/(long double)(gy+sy));
+
+    cout << fixed << setprecision(20) << v ENDL;
     
     return 0;
 }

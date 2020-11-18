@@ -43,11 +43,38 @@ vector<vector<int>> field;
 const int dx[4]={1,0,-1,0};
 const int dy[4]={0,1,0,-1};
 
+int cnt=0;
+
+int getres(int res,int n,int i,int j,vector<vector<int>> &T){
+
+    if(j==n) return res;
+    
+    for(int k=j;k<n;k++){
+        res+=T[i][k];
+        return getres(res,n,j,k,T);
+    }
+}
+
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    int n,k; cin >> n >> k;
+    vector<vector<int>> T(n,vector<int> (n));
+
+    rep(i,0,n)rep(j,0,n) cin >> T[i][j];
+
+    int res=0;
+
+    for(int i=1;i<n;i++){
+        res=getres(res,n,0,i,T);
+
+        if(res==k) cnt++;
+
+        res=0;
+    }
+
+    cout << cnt ENDL;   
     
     return 0;
 }

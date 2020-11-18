@@ -47,7 +47,15 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    int n; cin >> n;
+    ll res=0;
+    for(int i=0;i<n;i++){
+        ll a,b=0;
+        cin >> a >> b;
+        res+=((b-a)+1)*a+((b-a)*(b-a+1)/2);
+        //res+=(b*(b+1))/2 - ((a-1)*a)/2;
+    }
     
-    
+    cout << res ENDL;
     return 0;
 }

@@ -21,7 +21,7 @@ using itn = int;
 
 //constant
 const int INF = 1<<30;
-const ll INFL = 1LL << 60;
+const ll INFLL = 1LL << 60;
 const ll MOD = 1000000007;
 const long double PI =(acos(-1));
 
@@ -41,8 +41,20 @@ int main(){
     ll n; cin >> n;
     vector<ll> h(100006);
     rep(i,0,n) cin >> h[i];
+    
     vector<ll> dp(100006,INFL);
-    //vector<ll> cost(1000006);
+    dp[0]=0;
+    rep(i,1,n){
+        chmin(dp[i],dp[i-1]+abs(h[i]-h[i-1]));
+        if(i>1){
+            chmin(dp[i],dp[i-2]+abs(h[i]-h[i-2]));
+        }
+    }
+    cout << dp[n-1] ENDL;
+    return 0;
+}
+
+//vector<ll> cost(1000006);
     // rep(i,1,n){
     //     if(i==1) cost[i]=abs(h[i]-h[i-1]);
     //     else if(cost[i-1]+abs(h[i]-h[i-1])>cost[i-2]+abs(h[i]-h[i-2])){
@@ -51,19 +63,3 @@ int main(){
     //         cost[i]=cost[i-1]+abs(h[i]-h[i-1]);
     //     }
     // }
-    dp[0]=0;
-    rep(i,1,n){
-        chmin(dp[i],dp[i-1]+abs(h[i]-h[i-1]));
-        if(i>1){
-            chmin(dp[i],dp[i-2]+abs(h[i]-h[i-2]));
-        }
-    }
-
-
-    cout << dp[n-1] ENDL;
-
-
-
-    
-    return 0;
-}

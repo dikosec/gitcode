@@ -47,6 +47,30 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    ll x,y,a,b; cin >> x >> y >> a >> b;
+    ll ex=0;
+    while(x<y){
+        if(x<=(x+b)/a){
+            if(x<y/a){
+                x*=a;
+                ex++;
+            }
+            else {
+                ex++;
+                x=y+1;
+            }
+        }
+        else{
+            x+=b;
+            ex++;
+        }
+    }
+    
+    if((x-b)>y || (x/a)>y){
+        cout << ex ENDL;    
+    }else{
+        cout << ex-1 ENDL;
+    }
     
     
     return 0;

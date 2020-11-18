@@ -43,11 +43,35 @@ vector<vector<int>> field;
 const int dx[4]={1,0,-1,0};
 const int dy[4]={0,1,0,-1};
 
+int res=0;
+int cnt=0;
+
+void func(int n,int i,int j,vector<vector<int>> &T,int K){
+    if(j==n){
+        res+=T[i][j];
+        if(res==K) cnt++;
+    }
+
+
+    res+=T[i][j];
+    for(int k=j;k<=n;k++){
+        func(n,j,k,T,K);
+    }
+}
+
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+     int n,k; cin >> n >> k;
+    vector<vector<int>> T(n+1,vector<int> (n+1));
+    repe(i,1,n)repe(j,1,n) cin >> T[i][j];
+
+
+    for(int i=2;i<=n;i++){
+        func(n,1,i,T,k);    
+    }    
+
     
     return 0;
 }

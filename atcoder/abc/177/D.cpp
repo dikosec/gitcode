@@ -9,7 +9,7 @@ using namespace std;
 
 // abbreviati
 #define PB(v) push_back(v)
-#define MP(A,B) make_pair(A,B)
+#define MP make_pair
 #define F first
 #define S second
 #define all(v) v.begin(),v.end()

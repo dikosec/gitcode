@@ -47,7 +47,23 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    int n;
+    cin >> n;
+    ll m=0;
+    long double j=0.0;
+    ll c=0;
+    rep(i,0,n){
+        ll a;
+        cin >> a;
+        c=max(c,abs(a));
+        m+=abs(a);
+        j+=(long double)(abs(a)*abs(a));
+    }
+
+    cout << m ENDL;
+    cout << fixed << setprecision(25);
+    cout << (long double)sqrt(j) ENDL;
+    cout << c ENDL;
     
     return 0;
 }

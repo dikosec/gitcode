@@ -47,7 +47,9 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    int n,a,b;
+    cin >> n >> a >> b;
+    cout << (n-a)+b ENDL;
     
     return 0;
 }
