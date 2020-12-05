@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<numeric>
 using namespace std;
 
 // for loop
@@ -43,36 +44,21 @@ vector<vector<int>> field;
 const int dx[4]={1,0,-1,0};
 const int dy[4]={0,1,0,-1};
 
+ll lcm(int a,int b){ return a*b/ __gcd(a,b);}
+
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    double a,b,c;
-    cin >> a >> b >> c;
-    double sum=a+b+c;
-    
-    bool flag=1;
-    double ans=0;
-    while(flag){
-        
+    int n; cin >> n;
+    ll ans=2;
 
+    for(int i=3;i<=n;i++){
+        ans=lcm(ans,i);
     }
-
     
-    // double difa=100-a;
-    // double difb=100-b;
-    // double difc=100-c;
+    cout << ans+1 ENDL;
     
-    // double pa=a/sum;
-    // double pb=b/sum;
-    // double pc=c/sum;
-
-
-    // double ans=((difa)*pa)+((difb)*pb)+((difc)*pc);
-
-    // //cout << fixed << setprecision(20) << (difa*(a/sum)+difb*(b/sum)+difc*(c/sum)) ENDL;
     
-    // cout << fixed << setprecision(20) << ans ENDL;
-
     return 0;
 }

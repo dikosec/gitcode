@@ -47,32 +47,40 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    double a,b,c;
-    cin >> a >> b >> c;
-    double sum=a+b+c;
-    
-    bool flag=1;
-    double ans=0;
-    while(flag){
-        
+    int a,b,c,d; cin >> a >> b >> c >> d;
 
+    int ans=0;
+    rep(i,0,4){
+        if(i==0) ans=a+b;
+        if(i==1) ans=a-b;
+        if(i==2) ans=a*b;
+        if(i==3) ans=a/b;
+        rep(j,0,4){
+            if(j==0) ans=ans+c;
+            if(j==1) ans=ans-c;
+            if(j==2){
+                if(i==0){
+                    ans=a+(b*c);
+                }
+                if(i==1){
+                    ans=a-(b*c);
+                }
+            }
+            if(j==3){
+                if(i==0){
+                    ans=a+(b/c);
+                }
+                if(i==1){
+                    ans=a-(b/c);
+                }
+            }
+            rep(k,0,4){
+                if(k==0){
+                    
+                }
+            }
+        }
     }
-
     
-    // double difa=100-a;
-    // double difb=100-b;
-    // double difc=100-c;
-    
-    // double pa=a/sum;
-    // double pb=b/sum;
-    // double pc=c/sum;
-
-
-    // double ans=((difa)*pa)+((difb)*pb)+((difc)*pc);
-
-    // //cout << fixed << setprecision(20) << (difa*(a/sum)+difb*(b/sum)+difc*(c/sum)) ENDL;
-    
-    // cout << fixed << setprecision(20) << ans ENDL;
-
     return 0;
 }
