@@ -43,14 +43,20 @@ vector<vector<int>> field;
 const int dx[4]={1,0,-1,0};
 const int dy[4]={0,1,0,-1};
 
-// setprecision
-//cout << fixed << setprecision(n);
+// 
 
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+    double w,h,x,y; cin >> w >> h >> x >> y;
+
+    if(x==(w/2) && y==(h/2)){
+        cout << fixed << setprecision(10);
+        cout << (w*h)/2 << " " << 1 ENDL;
+    }else{
+        cout << (w*h)/2 << " " << 0 ENDL;
+    }
     
     return 0;
 }
