@@ -50,25 +50,18 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
-
+    int n,s,d; cin >> n >> s >> d;
+    vector<int> x(n);
+    vector<int> y(n);
+    ll damage=0;
     rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
-    }
-    sort(all(A));
-    reverse(all(A));
-
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
+        cin >> x[i] >> y[i];
+        if(x[i]<s && y[i]>d) damage +=y[i];
     }
 
-    cout << ans ENDL;
+    if(damage) cout << "Yes" ENDL;
+    else cout << "No" ENDL;
+
+    
     return 0;
 }

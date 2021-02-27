@@ -50,25 +50,52 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
+    int n; cin >> n;
+    vector<int> a(n);
+    vector<ll> ra(n);
 
+    ll sum = 0;
+    //int mina = INF;
     rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
-    }
-    sort(all(A));
-    reverse(all(A));
-
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
+        int A;
+        cin >> A;
+        //mina = min(mina,A);
+        a[i] = A;
+        sum += A;
+        ra[i] = sum;
     }
 
-    cout << ans ENDL;
+    // rep(i,0,n){
+    //     cout << ra[i] << " ";
+    // }cout ENDL;
+
+    int maxx = 0;
+    for(int l=0;l<=n;l++){
+        for(int r=l;r<n;r++){
+            int diff = (r-l)-1;
+            int sumrl =0;
+            if(r==l){
+                sumrl = ra[r];  
+            }else sumrl = ra[r]-ra[l-1];
+            
+            int mina = INF;
+            for(int i = l; i<=r; i++){
+                mina = min(mina,a[i]);
+            }
+
+            //cout << "ra[r]: " << ra[r] ENDL;
+            //cout << "sumrl: " << sumrl ENDL;
+            //cout << "(l,r,x)=" << "(" << l << "," << r << "," << mina << ")" ENDL;
+            //cout << "max: " << mina*(diff+2) ENDL;
+            maxx = max(maxx,mina*(diff+2));
+            //cout << "maxx: " << maxx ENDL;
+        }
+    }
+
+    cout << maxx ENDL;
+
+
+    
+    
     return 0;
 }

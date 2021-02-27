@@ -16,6 +16,7 @@ using namespace std;
 #define ENDL << "\n"
 
 using ll = long long;
+using lll = int64_t;
 using P = pair<int,int>;
 using itn = int;
 
@@ -46,29 +47,20 @@ const int dy[4]={0,1,0,-1};
 // setprecision
 //cout << fixed << setprecision(n);
 
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
 
-    rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+    lll n; cin >> n;
+    unordered_set<ll> s;
+    for(lll a=2;a*a<=n;a++){
+        lll x=a*a;
+        while(x<=n){
+            s.insert(x);
+            x*=a;
+        }
     }
-    sort(all(A));
-    reverse(all(A));
-
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
-    }
-
-    cout << ans ENDL;
+    cout << n-s.size() ENDL;
+    
     return 0;
 }

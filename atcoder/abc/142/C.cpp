@@ -50,25 +50,17 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
-
-    rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+    int n; cin >> n;
+    vector<pair<int,int>> p(n+1);
+    rep(i,1,n+1){
+        int tmp; cin >> tmp;
+        p[i] = make_pair(tmp,i);
     }
-    sort(all(A));
-    reverse(all(A));
+    sort(p.begin(),p.end());
 
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
-    }
-
-    cout << ans ENDL;
+    rep(i,1,n+1){
+        cout << p[i].second << " ";
+    }cout ENDL;
+    
     return 0;
 }

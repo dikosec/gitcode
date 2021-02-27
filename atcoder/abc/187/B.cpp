@@ -50,25 +50,28 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
+    int n; cin >> n;
+    vector<vector<int>> p(n,vector<int> (2));
 
     rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+        int x,y;
+        cin >> x >> y;
+        p[i][0]=x;
+        p[i][1]=y;
     }
-    sort(all(A));
-    reverse(all(A));
 
+    int cnt=0;
     rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
+        rep(j,0,n){
+            if(i==j)continue;
+            double tmp=(p[j][1]-p[i][1])/(p[j][0]-p[i][0]);
+            if(tmp>=-1 && tmp<=1){
+                cnt++;
+            }
+        }
     }
 
-    cout << ans ENDL;
+    cout << cnt ENDL;
+    
     return 0;
 }

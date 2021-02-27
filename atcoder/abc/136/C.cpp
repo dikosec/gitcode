@@ -47,28 +47,43 @@ const int dy[4]={0,1,0,-1};
 //cout << fixed << setprecision(n);
 
 
+bool move_check(int a,int b,int c){
+    if(a<=b && b<=c) return 1;
+    else return 0;
+
+}
+
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
+    ll n; cin >> n;
+    vector<ll> h(n);
 
-    rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+    rep(i,0,n) cin >> h[i];
+
+    
+
+    bool flag =1;
+    rep(i,0,n-2){
+        if(h[i]<h[i+1] && h[i+1]>h[i+2]){
+            h[i+1]--;
+            if(!move_check(h[i],h[i+1],h[i+2])){
+                cout << "No" ENDL;
+                //flag=0;
+                return 0;
+            }
+        }else{
+            if()
+            if(!move_check(h[i],h[i+1],h[i+2])){
+                cout << "No" ENDL;
+                return 0;
+                //flag=0;
+            }
+        }
+        //cout << "now:" << h[i] ENDL;
     }
-    sort(all(A));
-    reverse(all(A));
-
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
-    }
-
-    cout << ans ENDL;
+    
+    if(flag) cout << "Yes" ENDL;
+    else cout << "No" ENDL;
     return 0;
 }

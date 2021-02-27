@@ -50,25 +50,22 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
-
-    rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+    int n,m; cin >> n >> m;
+    vector<tuple<int,int,bool>> jouken;
+    rep(i,0,m){
+        int a,b;
+        cin >> a >> b;
+        jouken.emplace_back(a,b,0);
     }
-    sort(all(A));
-    reverse(all(A));
-
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
+    int k; cin >> k;
+    vector<vector<int>> jouken2(k,vector<int> (2));
+    int maxk=0;
+    rep(i,0,k){
+        cin >> jouken2[i][0] >> jouken2[i][1];
+        maxk = max(maxk,max(jouken2[i][0],jouken2[i][1]));
     }
+    
 
-    cout << ans ENDL;
+    
     return 0;
 }

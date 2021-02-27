@@ -46,29 +46,38 @@ const int dy[4]={0,1,0,-1};
 // setprecision
 //cout << fixed << setprecision(n);
 
+void get_array(string &s,vector<ll> &si){
+    rep(i,0,10){
+        si[(ll)s[i]] ++;
+    }
+}
+
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
+    ll n; cin >> n;
+    vector<string> s(n);
+    rep(i,0,n) cin >> s[i];
 
-    rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+    bool flag=1;
+    ll cnt=0;
+    rep(i,0,n-1){
+        flag = 1;
+        vector<ll> si(26);
+        get_array(s[i],si);
+        vector<ll> sj(26);
+        get_array(s[i+1],sj);
+        rep(j,0,26){
+            if(si[j]!=sj[j]){
+                cout << "now: " << i << ", " << j ENDL;
+                flag = 0;
+            }
+        }
+        if(flag) cnt++;
     }
-    sort(all(A));
-    reverse(all(A));
 
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
-    }
-
-    cout << ans ENDL;
+    cout << cnt ENDL;
+    
     return 0;
 }

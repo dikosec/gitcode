@@ -46,29 +46,28 @@ const int dy[4]={0,1,0,-1};
 // setprecision
 //cout << fixed << setprecision(n);
 
+bool isPrime(int n){
+    int i;
+    if(n<2) return 0;
+    else if(n==2) return 1;
+    if(n%2==0) return 0;
+    for(i=3;i*i<=n;i+=2) if(n%i==0) return 0;
+    return 1;
+}
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
-
-    rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+    ll n; cin >> n;
+    
+    ll ans = INFLL;
+    for(ll i=1;i*i<=n;i++){
+        if(n%i==0){
+            ll j = (ll)(n/i);
+            ans = min(ans,i+j-2);
+        }
     }
-    sort(all(A));
-    reverse(all(A));
-
-    rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
-    }
-
     cout << ans ENDL;
+
     return 0;
 }

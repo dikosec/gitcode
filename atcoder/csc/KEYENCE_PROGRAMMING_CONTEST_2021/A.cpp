@@ -1,3 +1,8 @@
+/*******************************************
+ * KEYENCE PROGRAMMING CONTEST 2021 (ARC)
+ * Problem A (300)
+ * *****************************************/
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -50,25 +55,25 @@ const int dy[4]={0,1,0,-1};
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;cin>>n;
-    vector<ll> A(n);
-    ll ans=0;
-    ll sum=0;
+    int n; cin >> n;
+    vector<ll> a(n);
+    vector<ll> b(n);
 
+    rep(i,0,n) cin >> a[i];
+    rep(i,0,n) cin >> b[i];
+
+    vector<ll> c(n);
+    ll cmax=0;
+    ll amax=0;
     rep(i,0,n){
-        ll a;
-        cin >> a;
-        A[i]=a;
-        sum+=a;
+        amax=max(amax,a[i]);
+        c[i]=max(cmax,amax*b[i]);
+        cmax=c[i];
     }
-    sort(all(A));
-    reverse(all(A));
-
+    
     rep(i,0,n){
-        sum-=A[i];
-        ans+=((ll)A[i]*(n-i-1))-sum;
+        cout << c[i] ENDL;
     }
-
-    cout << ans ENDL;
+    
     return 0;
 }
